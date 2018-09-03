@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Products;
+use App\Photos;
 use Illuminate\Http\Request;
 
-class ProductsController extends Controller
+class PhotoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,6 +13,16 @@ class ProductsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+    {
+        //
+    }
+   /**
+     * Show the form for removing the specified resource.
+     *
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function remove(Product $product)
     {
         //
     }
@@ -41,10 +51,10 @@ class ProductsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Products  $products
+     * @param  \App\Photos  $photos
      * @return \Illuminate\Http\Response
      */
-    public function show(Products $products)
+    public function show(Photos $photos)
     {
         //
     }
@@ -52,10 +62,10 @@ class ProductsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Products  $products
+     * @param  \App\Photos  $photos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Products $products)
+    public function edit(Photos $photos)
     {
         //
     }
@@ -64,10 +74,10 @@ class ProductsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Products  $products
+     * @param  \App\Photos  $photos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Products $products)
+    public function update(Request $request, Photos $photos)
     {
         //
     }
@@ -75,10 +85,10 @@ class ProductsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Products  $products
+     * @param  \App\Photos  $photos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Products $products)
+    public function destroy(Photos $photos)
     {
         //
     }

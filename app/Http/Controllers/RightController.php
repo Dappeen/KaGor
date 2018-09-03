@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Photos;
+use App\Rights;
 use Illuminate\Http\Request;
 
-class PhotosController extends Controller
+class RightController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,6 +13,16 @@ class PhotosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+    {
+        //
+    }
+   /**
+     * Show the form for removing the specified resource.
+     *
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function remove(Product $product)
     {
         //
     }
@@ -41,10 +51,10 @@ class PhotosController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Photos  $photos
+     * @param  \App\Rights  $rights
      * @return \Illuminate\Http\Response
      */
-    public function show(Photos $photos)
+    public function show(Rights $rights)
     {
         //
     }
@@ -52,10 +62,10 @@ class PhotosController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Photos  $photos
+     * @param  \App\Rights  $rights
      * @return \Illuminate\Http\Response
      */
-    public function edit(Photos $photos)
+    public function edit(Rights $rights)
     {
         //
     }
@@ -64,10 +74,10 @@ class PhotosController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Photos  $photos
+     * @param  \App\Rights  $rights
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Photos $photos)
+    public function update(Request $request, Rights $rights)
     {
         //
     }
@@ -75,10 +85,10 @@ class PhotosController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Photos  $photos
+     * @param  \App\Rights  $rights
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Photos $photos)
+    public function destroy(Rights $rights)
     {
         //
     }

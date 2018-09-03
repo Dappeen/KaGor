@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Rights;
+use App\Users;
 use Illuminate\Http\Request;
 
-class RightsController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,6 +13,16 @@ class RightsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+    {
+        //
+    }
+   /**
+     * Show the form for removing the specified resource.
+     *
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function remove(Product $product)
     {
         //
     }
@@ -41,10 +51,10 @@ class RightsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Rights  $rights
+     * @param  \App\Users  $users
      * @return \Illuminate\Http\Response
      */
-    public function show(Rights $rights)
+    public function show(Users $users)
     {
         //
     }
@@ -52,10 +62,10 @@ class RightsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Rights  $rights
+     * @param  \App\Users  $users
      * @return \Illuminate\Http\Response
      */
-    public function edit(Rights $rights)
+    public function edit(Users $users)
     {
         //
     }
@@ -64,10 +74,10 @@ class RightsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Rights  $rights
+     * @param  \App\Users  $users
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Rights $rights)
+    public function update(Request $request, Users $users)
     {
         //
     }
@@ -75,10 +85,10 @@ class RightsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Rights  $rights
+     * @param  \App\Users  $users
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Rights $rights)
+    public function destroy(Users $users)
     {
         //
     }

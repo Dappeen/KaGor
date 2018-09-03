@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Statuses;
+use App\Products;
 use Illuminate\Http\Request;
 
-class StatusesController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class StatusesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Statuses  $statuses
+     * @param  \App\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function show(Statuses $statuses)
+    public function show(Products $products)
     {
         //
     }
@@ -52,10 +52,10 @@ class StatusesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Statuses  $statuses
+     * @param  \App\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function edit(Statuses $statuses)
+    public function edit(Products $products)
     {
         //
     }
@@ -64,10 +64,10 @@ class StatusesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Statuses  $statuses
+     * @param  \App\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Statuses $statuses)
+    public function update(Request $request, Products $products)
     {
         //
     }
@@ -75,11 +75,22 @@ class StatusesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Statuses  $statuses
+     * @param  \App\Products  $products
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Statuses $statuses)
+    public function destroy(Products $products)
     {
         //
     }
+       /**
+     * Show the form for removing the specified resource.
+     *
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function remove(Product $product)
+    {
+        //
+    }
+
 }

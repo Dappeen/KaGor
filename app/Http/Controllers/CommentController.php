@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Comments;
 use Illuminate\Http\Request;
 
-class CommentsController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,6 +13,16 @@ class CommentsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+    {
+        //
+    }
+   /**
+     * Show the form for removing the specified resource.
+     *
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function remove(Product $product)
     {
         //
     }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Users;
+use App\Statuses;
 use Illuminate\Http\Request;
 
-class UsersController extends Controller
+class StatuseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,6 +13,16 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+    {
+        //
+    }
+   /**
+     * Show the form for removing the specified resource.
+     *
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function remove(Product $product)
     {
         //
     }
@@ -41,10 +51,10 @@ class UsersController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Users  $users
+     * @param  \App\Statuses  $statuses
      * @return \Illuminate\Http\Response
      */
-    public function show(Users $users)
+    public function show(Statuses $statuses)
     {
         //
     }
@@ -52,10 +62,10 @@ class UsersController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Users  $users
+     * @param  \App\Statuses  $statuses
      * @return \Illuminate\Http\Response
      */
-    public function edit(Users $users)
+    public function edit(Statuses $statuses)
     {
         //
     }
@@ -64,10 +74,10 @@ class UsersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Users  $users
+     * @param  \App\Statuses  $statuses
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Users $users)
+    public function update(Request $request, Statuses $statuses)
     {
         //
     }
@@ -75,10 +85,10 @@ class UsersController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Users  $users
+     * @param  \App\Statuses  $statuses
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Users $users)
+    public function destroy(Statuses $statuses)
     {
         //
     }
