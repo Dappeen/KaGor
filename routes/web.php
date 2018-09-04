@@ -71,3 +71,6 @@ Route::resource('users', 'UserController');
 // объявляем маршрут самостоятельно.
 Route::get('users/{user}/remove', 'UserController@remove')
      ->name('users.remove');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

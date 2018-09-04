@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Products;
+use App\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -14,7 +14,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        // Извлекаем из БД коллекцию товаров,
+        // отсортированных по возрастанию значений атрибута name
+        $products = Product::orderBy('name', 'ASC')->get();
+        // Использовать шаблон resources/views/products/index.blade.php, где…
+        return view('products.index')->withProducts($products);
     }
 
     /**
@@ -24,7 +28,12 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        // Форма добавления продукта в БД.
+        // Создаём в ОЗУ новый экземпляр (объект) класса Product.
+        $product = new Product();
+
+        // Использовать шаблон resources/views/products/create.blade.php, в котором…
+        return view('products.create')->withProduct($product);
     }
 
     /**
@@ -35,54 +44,80 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Добавление продукта в БД
+        // Принимаем из формы значения полей с name, равными name, price.
+        $attributes = $request->only(['name', 'price', 'description']);
+        $attributes['user_id']=$request->user()->id;
+
+        // Создаём кортеж в БД.
+        $product = Product::create($attributes);
+
+        // Создаём всплывающее сообщение об успешном сохранении в БД:
+        // первый аргумент ⁠— произвольный ID сообщения, второй ⁠— перевод
+        // (см. resources/lang/ru/messages.php).
+        $request->session()->flash(
+            'message',
+            __('Created', ['name' => $product->name])
+        );
+
+        // Перенаправляем клиент HTTP на маршрут с именем products.index
+        // (см. routes/web.php).
+        return redirect(route('products.index'));
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Products  $products
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Products $products)
+    public function show(Product $product)
     {
-        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Products  $products
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Products $products)
+    public function edit(Product $product)
     {
-        //
+        // Форма редактирования продукта в БД.
+        // Использовать шаблон resources/views/products/edit.blade.php, в котором…
+        return view('products.edit')->withProduct($product);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Products  $products
+     * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Products $products)
+    public function update(Request $request, Product $product)
     {
-        //
+        // Редактирование продукта в БД.
+
+        // Принимаем из формы значения полей с name, равными name, price.
+        $attributes = $request->only(['name', 'price', 'description']);
+
+        // Обновляем кортеж в БД.
+        $product->update($attributes);
+
+        // Создаём всплывающее сообщение об успешном обновлении БД
+        $request->session()->flash(
+            'message',
+            __('Updated', ['name' => $product->name])
+        );
+
+        // Перенаправляем клиент HTTP на маршрут с именем products.index
+        // (см. routes/web.php).
+        return redirect(route('products.index'));
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Products  $products
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Products $products)
-    {
-        //
-    }
-       /**
      * Show the form for removing the specified resource.
      *
      * @param  \App\Product  $product
@@ -90,7 +125,30 @@ class ProductController extends Controller
      */
     public function remove(Product $product)
     {
-        //
+        // Использовать шаблон resources/views/products/remove.blade.php, где…
+        // …переменная $producs ⁠— это объект товара.
+        return view('products.remove')->withProduct($product);
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Request $request, Product $product)
+    {
+        // Удаляем товар из БД.
+        $product->delete();
+
+        // Создаём всплывающее сообщение об успешном удалении из БД
+        $request->session()->flash(
+            'message',
+            __('Removed', ['name' => $product->name])
+        );
+
+        // Перенаправляем клиент HTTP на маршрут с именем products.index
+        // (см. routes/web.php).
+        return redirect(route('products.index'));
+    }
 }
