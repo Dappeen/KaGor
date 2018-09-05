@@ -3,7 +3,7 @@
 <div class="form-group">
     {{-- Метка к полю ввода наименования товара --}}
     {{-- На метке будет выведен перевод слова Name --}}
-    {{ Form::label('name', __('Name')) }}
+    {{ Form::label('name', __('Название')) }}
 
     {{-- Поле ввода наименования товара --}}
     {{ Form::text('name', null, ['class' => 'form-control']) }}
@@ -12,7 +12,7 @@
 <div class="form-group">
     {{-- Метка к полю ввода цены товара --}}
     {{-- На метке будет выведен перевод слова Price --}}
-    {{ Form::label('price', __('Price')) }}
+    {{ Form::label('price', __('Цена')) }}
 
     {{-- Поле ввода цены товара --}}
     {{ Form::number('price', null, ['class' => 'form-control']) }}
@@ -21,7 +21,7 @@
 <div class="form-group">
     {{-- Метка к полю ввода наименования товара --}}
     {{-- На метке будет выведен перевод слова Name --}}
-    {{ Form::label('description', __('Description')) }}
+    {{ Form::label('Description', __('Описание')) }}
 
     {{-- Поле ввода наименования товара --}}
     {{ Form::text('description', null, ['class' => 'form-control']) }}
