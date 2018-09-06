@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Product;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -32,8 +33,12 @@ class CommentController extends Controller
         // Создаём в ОЗУ новый экземпляр (объект) класса Comment.
         $comment = new Comment();
 
-        // Использовать шаблон resources/views/comments/create.blade.php, в котором…
-        return view('comments.create')->withComment($comment);
+
+
+        $products = product::orderBy('name', 'ASC')->pluck('name', 'id');// выгрузка юзеров через create
+        // Использовать шаблон resources/views/products/create.blade.php, в котором…
+        return view('comments.create')->withcomment($comment)->withProducts($products);
+
     }
 
     /**
@@ -63,7 +68,7 @@ class CommentController extends Controller
         // Перенаправляем клиент HTTP на маршрут с именем comments.index
         // (см. routes/web.php).
         return redirect(route('comments.index'));
-        
+
     }
 
     /**
@@ -86,7 +91,10 @@ class CommentController extends Controller
     {
         // Форма редактирования продукта в БД.
         // Использовать шаблон resources/views/comments/edit.blade.php, в котором…
-        return view('comments.edit')->withComment($comment);
+        $products = product::orderBy('name', 'ASC')->pluck('name', 'id');// выгрузка юзеров через create
+        // Использовать шаблон resources/views/products/create.blade.php, в котором…
+        return view('comments.edit')->withcomment($comment)->withProducts($products);
+        //return view('comments.edit')->withComment($comment);
     }
 
     /**
@@ -109,7 +117,7 @@ class CommentController extends Controller
         // Создаём всплывающее сообщение об успешном обновлении БД
         $request->session()->flash(
             'message',
-            __('Updated', ['content' => $comment->content])
+            __('Updateds', ['content' => $comment->content])
         );
 
         // Перенаправляем клиент HTTP на маршрут с именем comments.index
@@ -144,7 +152,7 @@ class CommentController extends Controller
         // Создаём всплывающее сообщение об успешном удалении из БД
         $request->session()->flash(
             'message',
-            __('Removed', ['content' => $comment->content])
+            __('Removeds', ['content' => $comment->content])
         );
 
         // Перенаправляем клиент HTTP на маршрут с именем comments.index

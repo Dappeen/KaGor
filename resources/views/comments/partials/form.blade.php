@@ -16,6 +16,5 @@
     {{ Form::label('Название товара', __('product_id')) }}
 
     {{-- Поле ввода цены товара --}}
-    {{ Form::number('product_id', null, ['class' => 'form-control']) }}
+    {{ Form::select('product_id', $products, ['class' => 'form-control']) }}
 </div>
-

@@ -4,7 +4,7 @@
 @extends('base')
 
 {{-- В секции content родительского шаблона будет выведен перевод фразы: Create comment --}}
-@section('content', __('Create comment'))
+@section('content', __('Создание комментария'))
 
 {{-- В секции main родительского шаблона будет выведена форма --}}
 @section('main')
