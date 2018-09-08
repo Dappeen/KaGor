@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Statuse;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -17,8 +18,11 @@ class ProductController extends Controller
         // Извлекаем из БД коллекцию товаров,
         // отсортированных по возрастанию значений атрибута name
         $products = Product::orderBy('name', 'ASC')->get();
+
+        $statuses = Statuse::orderBy('name', 'ASC')->get();
+
         // Использовать шаблон resources/views/products/index.blade.php, где…
-        return view('products.index')->withProducts($products);
+        return view('products.index')->withProducts($products)->withStatuses($statuses);
     }
 
     /**
@@ -32,8 +36,11 @@ class ProductController extends Controller
         // Создаём в ОЗУ новый экземпляр (объект) класса Product.
         $product = new Product();
 
+        $statuses = Statuse::orderBy('name', 'ASC')->pluck('name', 'id');// выгрузка юзеров через create
         // Использовать шаблон resources/views/products/create.blade.php, в котором…
-        return view('products.create')->withProduct($product);
+        return view('products.create')->withProduct($product)->withStatuses($statuses);
+        // Использовать шаблон resources/views/products/create.blade.php, в котором…
+        //return view('products.create')->withProduct($product);
     }
 
     /**
@@ -46,7 +53,7 @@ class ProductController extends Controller
     {
         // Добавление продукта в БД
         // Принимаем из формы значения полей с name, равными name, price.
-        $attributes = $request->only(['name', 'price', 'description']);
+        $attributes = $request->only(['name', 'price', 'description', 'statuses_id']);
         $attributes['user_id']=$request->user()->id;
 
         // Создаём кортеж в БД.
@@ -63,7 +70,6 @@ class ProductController extends Controller
         // Перенаправляем клиент HTTP на маршрут с именем products.index
         // (см. routes/web.php).
         return redirect(route('products.index'));
-
     }
 
     /**
@@ -86,7 +92,10 @@ class ProductController extends Controller
     {
         // Форма редактирования продукта в БД.
         // Использовать шаблон resources/views/products/edit.blade.php, в котором…
-        return view('products.edit')->withProduct($product);
+      //  return view('products.edit')->withProduct($product);
+        $statuses = Statuse::orderBy('name', 'ASC')->pluck('name', 'id');// выгрузка юзеров через create
+        // Использовать шаблон resources/views/products/create.blade.php, в котором…
+        return view('products.edit')->withProduct($product)->withStatuses($statuses);
     }
 
     /**

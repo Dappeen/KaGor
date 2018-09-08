@@ -24,6 +24,7 @@
                 <th>{{ __('Name') }}</th>
                 <th>{{ __('Price') }}</th>
                 <th>{{ __('Description') }}</th>
+                <th>{{ __('Status') }}</th>
                 <th>
                     <span class="glyphicon glyphicon-pencil" aria-hidden="true">
                     </span>
@@ -38,6 +39,13 @@
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->price }}</td>
                     <td>{{ $product->description }}</td>
+                    <td>
+                      @foreach ($statuses as $status)
+                        @if ($status->id == $product->statuses_id)
+                          {{ $status->name }}
+                        @endif
+                      @endforeach
+                    </td>
                     <td>{{ Html::secureLink(
                         route('products.edit', $product->id),
                         __('Edit product')

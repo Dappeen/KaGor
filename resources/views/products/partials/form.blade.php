@@ -26,3 +26,12 @@
     {{-- Поле ввода наименования товара --}}
     {{ Form::text('description', null, ['class' => 'form-control']) }}
 </div>
+
+<div class="form-group">
+    {{-- Метка к полю ввода наименования товара --}}
+    {{-- На метке будет выведен перевод слова Name --}}
+    {{ Form::label('Statuses', __('Статус')) }}
+
+    {{-- Поле ввода наименования товара --}}
+    {{ Form::select('statuses_id', $statuses, ['class' => 'form-control']) }}
+</div>

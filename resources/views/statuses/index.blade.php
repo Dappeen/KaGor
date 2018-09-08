@@ -21,7 +21,7 @@
     <div class="table-responsive">
         <table class="table table-hover table-striped">
             <tr>
-                <th>{{ __('name') }}</th>
+                <th>{{ __('names') }}</th>
                 <th>
                     <span class="glyphicon glyphicon-pencil" aria-hidden="true">
                     </span>

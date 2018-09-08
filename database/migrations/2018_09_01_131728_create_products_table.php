@@ -20,6 +20,11 @@ class CreateProductsTable extends Migration
                 ->on('users')
                 ->onDelete('CASCADE')
                 ->onUpdate('RESTRICT');
+          $table->integer('statuses_id') ->unsigned();
+          $table->foreign('statuses_id') ->references('id')
+                  ->on('statuses')
+                  ->onDelete('CASCADE')
+                  ->onUpdate('RESTRICT');
           $table->string('description', 191);
           $table->decimal('price', 65, 2);
           $table->string('name', 191)->unique();

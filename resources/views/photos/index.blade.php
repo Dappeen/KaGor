@@ -1,49 +1,40 @@
-{{-- Это шаблон перечня товаров из БД, свёрстанный для Bootstrap --}}
-
-{{-- Этот шаблон расширяет (наследует) resources/views/base.blade.php --}}
 @extends('base')
 
-{{-- В секции path родительского шаблона будет выведен перевод фразы: photos --}}
-@section('path', __('photos'))
+@section('title', ('Photos'))
 
-{{-- В секции main родительского шаблона будет выведена форма --}}
+<center>
+    <h1>{{ ('Photos') }}</h1>
+</center>
+
 @section('main')
-    <p>
-        {{-- Метод Html::secureLink(URL, надпись, атрибуты) создаёт ссылку. --}}
-        {{
-            Html::secureLink(
-                route('photos.create'),
-                __('Create photo')
-            )
-        }}
-    </p>
 
-    <div class="table-responsive">
-        <table class="table table-hover table-striped">
-            <tr>
-                <th>{{ __('path') }}</th>
-                <th>
-                    <span class="glyphicon glyphicon-pencil" aria-hidden="true">
-                    </span>
-                </th>
-                <th>
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true">
-                    </span>
-                </th>
-            </tr>
-            @foreach ($photos as $photo)
-                <tr>
-                    <td>{{ $photo->path }}</td>
-                    <td>{{ Html::secureLink(
-                        route('photos.edit', $photo->id),
-                        __('Edit photo')
-                    ) }}</td>
-                    <td>{{ Html::secureLink(
-                        route('photos.remove', $photo->id),
-                        __('Remove photo')
-                    ) }}</td>
-                </tr>
-            @endforeach
-        </table>
+  <p>
+    {{-- Метод Html::secureLink(URL, надпись, атрибуты) создаёт ссылку. --}}
+    {{
+      Html::secureLink(
+        route('photos.create'),
+        __('Create photo')
+      )
+    }}
+  </p>
+
+    <div class="container-fluid">
+        <div class="row">
+        @foreach ($photos as $photo)
+          <figure class = "col-xs-12 col-sm-6 col-md-3 col-lg-1">
+            <img alt = "{{ $photo->path }}" src = "{{ asset('storage/images/'.$photo->path) }}" class = "img-responsive img-thumbnail">
+            <figcaption class = "text-center">
+              {{ Html::secureLink(
+                  route('photos.edit', $photo->id),
+                  __('Edit photo')
+                )}}
+              {{ Html::secureLink(
+                  route('photos.remove', $photo->id),
+                  __('Remove photo')
+                )}}
+            </figcaption>
+          </figure>
+        @endforeach
+        </div>
     </div>
 @endsection

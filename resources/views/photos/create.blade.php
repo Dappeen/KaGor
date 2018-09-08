@@ -13,6 +13,7 @@
     {{
         Form::model($photo, [
             'method' => 'POST',
+            'files'  =>  true,
             'route'  => 'photos.store'
         ])
     }}
