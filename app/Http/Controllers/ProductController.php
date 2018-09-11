@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Statuse;
+use App\Comment;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -80,6 +81,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+      $statuses = Statuse::orderBy('id', 'ASC')->pluck('name', 'id');
+      $comment = new Comment();
+      return view('products.show')->withProduct($product)->withStatuses($statuses)->withComment($comment);
     }
 
     /**

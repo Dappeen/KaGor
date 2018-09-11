@@ -22,7 +22,7 @@
         <div class="row">
         @foreach ($photos as $photo)
           <figure class = "col-xs-12 col-sm-6 col-md-3 col-lg-1">
-            <img alt = "{{ $photo->path }}" src = "{{ asset('storage/images/'.$photo->path) }}" class = "img-responsive img-thumbnail">
+            <img alt = "{{ $photo->id }}" src = "{{ asset('storage/images/'.$photo->path) }}" class = "img-responsive img-thumbnail">
             <figcaption class = "text-center">
               {{ Html::secureLink(
                   route('photos.edit', $photo->id),
